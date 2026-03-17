@@ -36,7 +36,7 @@ The goal was to:
 ## Key Concepts
 
 - Connectionism: AI learns through patterns and statistical relationships  
-- Latent Space: A multi-dimensional space where visual concepts exist  
+- Latent Space: A multi dimensional space where visual concepts exist  
 - Semantic Gap: The disconnect between language (prompt) and image (output)  
 - Facture: The physical and visual texture of an image  
 - LoRA (Low-Rank Adaptation): A lightweight training method to teach models new subjects or styles  
