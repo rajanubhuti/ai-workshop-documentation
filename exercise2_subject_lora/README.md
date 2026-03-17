@@ -47,8 +47,8 @@ Each image was paired with a text annotation describing:
 - the object  
 - its position  
 - its relationship to the environment
-
-
+- 
+![Dataset](dataset_overview.jpg)
 
 ---
 
@@ -75,7 +75,9 @@ The trained LoRA was able to generate:
 
 However, some distortions remained in:
 - scale  
-- fine structural accuracy  
+- fine structural accuracy
+
+![Generated Results](generated_results.jpg)
 
 ---
 
