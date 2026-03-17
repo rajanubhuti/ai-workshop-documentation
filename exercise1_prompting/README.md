@@ -41,7 +41,15 @@ The generated image captured:
 However, it struggled with:
 - Accurate human anatomy  
 - Subtle posture details  
-- Emotional tone and narrative tension  
+- Emotional tone and narrative tension
+
+## Reference Image
+
+![Reference Image](ref_pool_scene.jpg)
+
+## Generated Output
+
+![Generated Image](gen_pool_scene_1.jpg)
 
 ---
 
@@ -60,12 +68,20 @@ However:
 - Texture and photographic quality  
 - The pose lacked precision compared to the reference  
 
+## Reference Image
+
+![Reference Image](ref_mountain_woman.jpg)
+
+## Generated Output
+
+![Generated Image](gen_mountain_woman_1.jpg)
+
 ---
 
 ## Tools Used
 
-- Gemini (initial prompt-based generation)  
-- Flux.1 (via Replicate, for comparison across models)  
+- Gemini Nano Banana 
+- Flux 1.1 
 
 ---
 
