@@ -207,10 +207,10 @@ The role of the designer is to define the rules of imagination.
 
 ## Repository Structure
 
-- /exercise1_prompting  
-- /exercise2_subject_lora  
-- /exercise3_style_lora  
-- /final_project_tumbbad  
+- [exercise1_prompting](./exercise1_prompting)
+- [exercise2_subject_lora](./exercise2_subject_lora)
+- [exercise3_style_lora](./exercise3_style_lora)
+- [final_project_tumbbad](./final_project_tumbbad)
 
 ---
 
