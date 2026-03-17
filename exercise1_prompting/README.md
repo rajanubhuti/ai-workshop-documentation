@@ -36,10 +36,11 @@ Generate a vivid acrylic painting. Foreground: beige and gray stone terrace with
 The generated image captured:
 - Overall composition  
 - Color distribution  
-- General positioning of subjects  
+- General positioning of subjects
+- Accurate human anatomy
 
 However, it struggled with:
-- Accurate human anatomy  
+- General positioning and direction of subjects 
 - Subtle posture details  
 - Emotional tone and narrative tension
 
