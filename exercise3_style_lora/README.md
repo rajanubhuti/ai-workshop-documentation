@@ -26,7 +26,7 @@ A dataset of 15 images was curated, focusing on consistency rather than diversit
 
 The dataset emphasizes:
 - symmetrical compositions  
-- strong line-based structures  
+- strong line based structures  
 - repetitive motifs (flowers, birds, animals)  
 - characteristic border designs  
 
@@ -81,7 +81,7 @@ The outputs demonstrate:
 
 Notably, the model was able to stylize:
 - traditional subjects (fish, animals)  
-- non-traditional subjects (e.g. a Formula 1 car)  
+- non traditional subjects (e.g. a Formula 1 car)  
 
 ---
 
