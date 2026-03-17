@@ -59,7 +59,7 @@ Instead of designing objects directly, the approach was to construct a **two-lay
 
 1. A model that learns the **environment (world logic)**  
 2. A model that learns the **objects (artifact logic)**  
-3. A combination of both to produce **context-aware generations**
+3. A combination of both to produce **context aware generations**
 
 This approach aligns with the concept of **double LoRA**, where two distinct learning processes are combined at generation time.
 
@@ -71,11 +71,11 @@ This approach aligns with the concept of **double LoRA**, where two distinct lea
 
 The first LoRA was trained on images representing the Tumbbad universe:
 
-- underground caves and temple-like structures  
-- eroded stone surfaces and влаж textures  
+- underground caves and temple like structures  
+- eroded stone surfaces and moist textures  
 - dim lighting with strong warm highlights  
 - gold coins and reflective surfaces  
-- enclosed, repetitive architectural spaces  
+- enclosed, underground architectural spaces  
 
 Each image was selected to reinforce a consistent **material and atmospheric language**.
 
@@ -100,7 +100,7 @@ The trained model produced:
 The environment LoRA successfully captured:
 
 - **lighting conditions** (low light with warm focal points)  
-- **material consistency** (stone, gold, влаж surfaces)  
+- **material consistency** (stone, gold, wet surfaces)  
 - **spatial atmosphere** (enclosed, immersive environments)  
 
 This model establishes the **contextual framework** within which objects can exist.
@@ -178,7 +178,7 @@ The combined model produced a range of artifacts:
 
 - storage containers for gold  
 - extraction tools  
-- ritual-like structures  
+- ritual like objects (dolls in this case) 
 - hybrid objects combining utility and symbolism  
 
 These objects appear as part of a **coherent design ecosystem**, shaped by:
@@ -236,12 +236,12 @@ The design process therefore shifts toward defining the **conditions under which
 
 ## Conclusion
 
-By structuring the project into two learning layers—environment and object—it becomes possible to generate artifacts that feel embedded within a fictional world.
+By structuring the project into two learning layers, environment and object, it becomes possible to generate artifacts that feel embedded within a fictional world.
 
 This approach positions AI as a tool for:
 
 - speculative design  
-- narrative-driven object creation  
+- narrative driven object creation  
 - world-based generative systems  
 
 It opens new possibilities for designing not only objects, but the **systems and contexts from which they arise**.
