@@ -246,7 +246,7 @@ This approach positions AI as a tool for:
 
 - speculative design  
 - narrative driven object creation  
-- world-based generative systems  
+- world based generative systems  
 
 It opens new possibilities for designing not only objects, but the **systems and contexts from which they arise**.
 
