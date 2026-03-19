@@ -67,8 +67,8 @@ Detailed prompting and negative prompting are necessary to control output.
 To train a LoRA on a physical object and understand how AI learns form and scale.
 
 ### Dataset  
-- 15 curated images  
-- Varied angles (macro, profile, in-use)  
+- 12 curated images  
+- Varied angles (macro, profile, in use)  
 - Controlled lighting  
 - Trigger word: `yellowflowerclip`
 
@@ -92,8 +92,9 @@ Precise annotation directly impacts accuracy.
 To train a LoRA on an artistic style rather than a physical object.
 
 ### Dataset  
-- 15+ Madhubani artworks  
-- Focus on color palettes, line patterns, and graphic density  
+- 15 Madhubani artworks  
+- Focus on color palettes, line patterns, and graphic density
+- Trigger word: `mdhstyll` 
 
 ### Iterations  
 
