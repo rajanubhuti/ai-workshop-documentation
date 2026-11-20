@@ -1,107 +1,47 @@
-# Exercise 3: Style Training (Madhubani)
+# Exercise 3: Teaching a model Madhubani
 
-## Objective
+[← Back to the overview](../README.md)
 
-The goal of this exercise was to train a LoRA model on a specific artistic style in order to understand how AI learns visual patterns, structure, and stylistic rules.
+After an object, we trained a style. I chose Madhubani, the folk painting tradition from Mithila in Bihar, my home state. It felt like the natural pick, and it meant I could tell quickly when the model got something wrong.
 
-Unlike subject based training, this task focused on capturing a **visual system** rather than a single object.
+A style is different from an object. There's no single shape to learn. It's a set of rules:
 
----
+- bold black outlines
+- flat, bright colours
+- every empty space filled with lines, dots and patterns
+- decorative borders framing the scene
+- recurring motifs: fish, birds, lotus, peacocks
 
-## Chosen Style
+## The dataset
 
-The selected style for this exercise was **Madhubani art**, a traditional Indian folk art characterized by:
+15 Madhubani paintings, chosen to be consistent rather than varied: mostly square, mostly with borders, mostly animal and flower subjects.
 
-- bold outlines  
-- flat, saturated colors  
-- repetitive geometric and floral patterns  
-- highly decorative borders  
-- dense compositions with minimal empty space  
+![The 15 Madhubani paintings used for training](dataset_madhubani.jpg)
 
----
+*These paintings are by other artists (several are signed). I used them only to learn for this class exercise.*
 
-## Dataset Curation
+**Trigger word:** `mdhstyll`
 
-A dataset of 15 images was curated, focusing on consistency rather than diversity.
+The captions described the style rather than the subject: fill patterns, line weights, border designs, how dense the decoration is.
 
-The dataset emphasizes:
-- symmetrical compositions  
-- strong line based structures  
-- repetitive motifs (flowers, birds, animals)  
-- characteristic border designs  
+## Results
 
-![Dataset](dataset_madhubani.jpg)
+I tested it on classic Madhubani subjects and on one that has nothing to do with it: a Formula 1 car.
 
-### Trigger Word  
-`mdhstyll`
+![Four images generated with the Madhubani LoRA](generated_madhubani.jpg)
 
-This keyword was used to activate the learned style during generation.
+| Prompt (short version) | How it went |
+|---|---|
+| An elephant walking through a forest | The best one. Patterned elephant, stylised trees, a proper double border. |
+| A circular mandala of two fish | Strong. Circular frame, scales filled with pattern, very close to the dataset. |
+| Three fish swimming in a river | Colourful and nice, but it drifted towards a generic koi illustration. Less Madhubani, more stock art. |
+| A flat side view of an F1 car | The border, fish and yellow background are right. The car itself still looks like a 3D render with a pattern painted on top. |
 
----
+## What I noticed
 
-## Training Process
+- **Colour, borders and composition came through first.** They're big and repeated in every training image, so the model picked them up quickly.
+- **Line work is the weak spot.** Real Madhubani has very fine, careful lines. The model's lines get blurry or simplified, especially in busy areas.
+- **It copies the look, not the meaning.** It knows fish and borders go together, but not why. It doesn't know what a motif means or where it belongs.
+- **Unusual subjects are the real test.** The F1 car showed where the style stops: it can decorate an object, but it can't redraw it the Madhubani way.
 
-The LoRA model was trained to capture:
-
-- line quality and thickness  
-- pattern repetition and rhythm  
-- color relationships  
-- compositional framing (especially borders and central subjects)  
-
-Each image was paired with annotations describing stylistic elements such as:
-- geometric fill patterns  
-- decorative density  
-- traditional line work  
-
----
-
-## Observations
-
-### Style Learning vs Object Learning
-
-Unlike objects, style is not a fixed form but a set of visual rules.
-
-The model showed that:
-- color and composition are learned relatively quickly  
-- fine line quality and pattern precision are harder to reproduce  
-
----
-
-## Generated Outputs
-
-The trained LoRA was used to apply Madhubani style to different subjects.
-
-![Generated Results](generated_madhubani.jpg)
-
-The outputs demonstrate:
-
-- successful transfer of decorative borders and framing  
-- consistent use of flat colors and bold outlines  
-- ability to apply the style to new subjects (animals, objects, vehicles)  
-
-Notably, the model was able to stylize:
-- traditional subjects (fish, animals)  
-- non traditional subjects (e.g. a Formula 1 car)  
-
----
-
-## Limitations
-
-- line sharpness is sometimes inconsistent  
-- patterns can lose precision in complex areas  
-- some outputs simplify the original density of the style  
-
----
-
-## Key Learnings
-
-This exercise showed that:
-
-- Style is learned through **repetition and consistency**, not variation  
-- The model captures style as a **set of visual patterns**, not cultural meaning  
-- Borders and composition are strong anchors for stylistic identity  
-- Applying style to unexpected subjects reveals the flexibility of generative models  
-
-Most importantly:
-
-> Training a style is about encoding a system of visual rules rather than reproducing specific images.
+Training a style is less about showing the model pictures and more about giving it a consistent set of visual rules it can repeat.
