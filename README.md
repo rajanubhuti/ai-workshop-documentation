@@ -46,8 +46,8 @@ I'm a UX designer, not an ML engineer, so this is written from that side. What d
 
 ## A few words we used in class
 
-- **LoRA (Low Rank Adaptation):** a small add-on trained on top of a big image model, so it can learn one new subject or style from a handful of images without retraining the whole thing.
-- **Trigger word:** a made-up word attached to the training images. Putting it in a prompt switches the LoRA on.
+- **LoRA (Low Rank Adaptation):** a small add on trained on top of a big image model, so it can learn one new subject or style from a handful of images without retraining the whole thing.
+- **Trigger word:** a made up word attached to the training images. Putting it in a prompt switches the LoRA on.
 - **Semantic gap:** the distance between what I see in an image and what I can actually put into words.
 - **Facture:** the surface quality of an image: its texture, grain, brushwork, how it feels made.
 - **Latent space:** the space of visual patterns the model has learned, where it "looks" when it makes an image.
@@ -56,8 +56,8 @@ I'm a UX designer, not an ML engineer, so this is written from that side. What d
 
 ## Try the Tumbbad models
 
-- World LoRA: [replicate.com/esadorleans/tumbbad-gold-world](https://replicate.com/esadorleans/tumbbad-gold-world)
-- Object LoRA: [replicate.com/esadorleans/tumbbad-artifacts-lora](https://replicate.com/esadorleans/tumbbad-artifacts-lora)
+- [World LoRA on Replicate](https://replicate.com/esadorleans/tumbbad-gold-world)
+- [Object LoRA on Replicate](https://replicate.com/esadorleans/tumbbad-artifacts-lora)
 
 ## Credits
 

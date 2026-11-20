@@ -105,5 +105,5 @@ The model doesn't imagine anything on its own. It recombines what it has learned
 
 ## Try the models
 
-- World LoRA: [replicate.com/esadorleans/tumbbad-gold-world](https://replicate.com/esadorleans/tumbbad-gold-world)
-- Object LoRA: [replicate.com/esadorleans/tumbbad-artifacts-lora](https://replicate.com/esadorleans/tumbbad-artifacts-lora)
+- [World LoRA on Replicate](https://replicate.com/esadorleans/tumbbad-gold-world)
+- [Object LoRA on Replicate](https://replicate.com/esadorleans/tumbbad-artifacts-lora)
