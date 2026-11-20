@@ -1,263 +1,109 @@
-# Final Project: Speculative Worldbuilding with AI (Tumbbad)
+# Final project: Designing objects for the world of Tumbbad
 
-## Introduction
+[← Back to the overview](../README.md)
 
-This project extends the workshop into a speculative design investigation, treating AI not as a tool for image generation, but as a **system capable of learning and reproducing a coherent world**.
+For the final project I wanted to use LoRAs for something closer to design than to making pretty pictures. The question I set myself:
 
-Rather than producing isolated outputs, the objective was to construct a **unified fictional universe** and generate artifacts that feel intrinsically embedded within it.
-
-The project is inspired by the film *Tumbbad*, whose visual and narrative richness provides a strong foundation for exploring the relationship between **environment, material, and object design**.
-
----
+**Can AI help design objects that feel like they belong to a specific fictional world?**
 
 ## Why Tumbbad
 
-*Tumbbad* presents a universe that is both visually and conceptually dense.
+*Tumbbad* (2018, directed by Rahi Anil Barve) is an Indian folk horror film. The family in it keeps going down into a hidden, wet, underground space to steal gold coins from a cursed creature, and each trip is more dangerous than the last.
 
-It is defined by:
+![Tumbbad film poster](tumbbad_poster.jpg)
 
-- enclosed underground architectures  
-- Moist, decaying materials (mud, stone, oxidized surfaces)  
-- a constant interplay between darkness and warm, flickering light  
-- the overwhelming presence of gold as both material and symbol  
+*Poster belongs to the film's makers.*
 
-The world is governed by a narrative of **greed, repetition, and risk**, where characters repeatedly enter a hidden space to extract gold from a mysterious entity.
+It's a great world to design for because it comes with built in constraints:
 
-This makes it particularly relevant for this project, as it provides:
+- **Material:** mud, wet stone, rot, and gold everywhere
+- **Light:** almost dark, with small warm sources like torches
+- **Space:** tight, enclosed, claustrophobic
+- **Story:** people need to go in, grab gold and get out without being caught
 
-- a strong **material logic** (gold, stone, moisture)  
-- a clear **environmental constraint system**  
-- a narrative context that implies the need for specific tools and objects  
+That last point is the important one for design. If you have to collect gold from something that wants to grab you, you need tools. What would those tools look like?
 
-![Tumbbad Poster](tumbbad_poster.jpg)
+## The plan: two LoRAs
 
----
+Instead of one model that knows everything, I trained two:
 
-## The Universe (Sensory and Material Logic)
-
-The Tumbbad universe is not only defined by its visuals, but by its **atmospheric and sensory qualities**.
-
-It is a space of:
-
-- low visibility, with localized warm light sources  
-- wet, heavy surfaces that suggest age and decay  
-- confined spatial structures that create a sense of pressure and repetition  
-
-Gold, in this context, is not ornamental. It appears excessive, dense, and almost organic, reinforcing the tension between desire and danger.
-
-This sensory understanding guided the dataset construction, ensuring that the model learns not just visual elements, but a **coherent environmental logic**.
+1. **A world LoRA** that learns the environment: the caves, stone, light and wetness
+2. **An object LoRA** that learns the kind of things that could exist there: gauntlets, chests, tools
+3. Then I **use both together**, so the objects come out already sitting inside the world
 
 ---
 
-## Design Intent
+## Part 1: The world LoRA
 
-The central question driving this project is:
+**Trigger word:** `tmbbdwrld`
 
-**How can AI generate objects that belong to a specific fictional world?**
+The dataset is underground caves and temple like corridors, eroded and wet stone, dim light with strong warm highlights, and gold coins. I chose images that agree with each other on material, light and mood, so the model learns one consistent world rather than "caves in general."
 
-Instead of designing objects directly, the approach was to construct a **two-layer generative system**:
+![World dataset](tumbbad_universe_dataset.jpg)
 
-1. A model that learns the **environment (world logic)**  
-2. A model that learns the **objects (artifact logic)**  
-3. A combination of both to produce **context aware generations**
-
-This approach aligns with the concept of **double LoRA**, where two distinct learning processes are combined at generation time.
-
----
-## Part 1: Training the Universe (Environment LoRA)
-
-### Dataset Construction
-
-The first LoRA was trained on images representing the visual and atmospheric logic of the Tumbbad universe.
-
-The dataset includes:
-
-- underground caves and temple like structures  
-- eroded stone surfaces and moist textures  
-- dim lighting with strong warm highlights  
-- gold coins and reflective surfaces  
-- enclosed architectural spaces  
-
-Each image was selected to maintain consistency in **material, lighting, and spatial atmosphere**, allowing the model to learn a coherent environmental language.
-
-![Universe Dataset](tumbbad_universe_dataset.jpg)
-
----
-
-### Generated Results
-# Example Prompts
-The following prompts were used to test how the model learned the atmosphere and spatial logic of the Tumbbad universe:
+**Test prompts**
 
 - `tmbbdwrld dark underground temple chamber with wet stone floor and scattered gold coins, torch lighting`
 - `tmbbdwrld ancient temple corridor carved in stone, dim torch lights reflecting on wet floor`
 - `tmbbdwrld underground cave temple filled with gold coins and stone pillars, dark cinematic lighting`
 
-![Universe Outputs](tumbbad_universe_outputs.jpg)
+![World LoRA outputs](tumbbad_universe_outputs.jpg)
+
+This worked well. The low light, warm torches, wet reflective floors and scattered gold all came through. One image drifted outside into a mossy courtyard, which isn't really Tumbbad, but the rest felt like the same place.
 
 ---
 
-### Analysis
+## Part 2: The object LoRA
 
-The environment LoRA successfully captured:
+**Trigger word:** `tmbbdobj`
 
-- lighting conditions (low light with warm focal points)  
-- material consistency (stone, gold, wet surfaces)  
-- spatial atmosphere (enclosed and immersive environments)  
+The dataset is protective gloves and gauntlets, chests and containers, and old metal tools, with lots of engraving, wear and tarnish. I picked them for how they'd be used, what they're made of and how clearly you can read their shape.
 
-This model establishes the **contextual foundation** for object generation.
+![Object dataset](tumbbad_artifacts_dataset.jpg)
 
----
-
-## Part 2: Training the Artifacts (Object LoRA)
-
-### Dataset Construction
-
-A second LoRA was trained on objects that could plausibly exist within this universe.
-
-The dataset includes:
-
-- protective gloves and gauntlets  
-- containers, chests, and storage objects  
-- tools and mechanical forms  
-- worn metallic surfaces and engraved details  
-
-The focus was on:
-
-- functionality  
-- material expression  
-- structural clarity  
-
-![Artifacts Dataset](tumbbad_artifacts_dataset.jpg)
-
----
-
-### Generated Results
-# Example Prompts
-The following prompts were used to evaluate object generation:
+**Test prompts**
 
 - `tmbbdobj ornate medieval armored gauntlet artifact`
 - `tmbbdobj ancient mechanical claw tool made of metal`
 - `tmbbdobj ritual artifact container with carved engravings`
 
-![Artifacts Outputs](tumbbad_artifacts_outputs.jpg)
+![Object LoRA outputs](tumbbad_artifacts_outputs.jpg)
+
+The model understood the types of objects and the worn brass and iron look. But every result looks like a museum product photo on a plain background. They're nice objects, but they don't belong anywhere yet.
 
 ---
 
-### Analysis
+## Part 3: Both together
 
-The artifact LoRA demonstrated:
+Using both trigger words in the same prompt:
 
-- strong understanding of object typologies  
-- consistent reproduction of material qualities  
-- partial success in conveying functional intent  
-
-However, without environmental context, these objects remain **visually isolated**.
-
----
-
-## Part 3: Combining World and Objects (Double LoRA)
-
-The final stage involved combining both LoRAs to generate context-aware artifacts.
-
-Both trigger words were used simultaneously:
-
-`tmbbdobj + tmbbdwrld`
-
-# Example Prompts
 - `ancient gold extraction gauntlet artifact, tmbbdobj, tmbbdwrld, carved stone and gold coins, torch lit cave`
 - `ornate armored gauntlet designed to collect cursed gold coins, tmbbdobj, tmbbdwrld, temple stone and gold`
 - `ancient container for cursed gold coins, tmbbdobj, tmbbdwrld, carved temple stone chest`
 
-![Combined Results](tumbbad_combined_outputs.jpg)
+![Objects generated inside the Tumbbad world](tumbbad_combined_outputs.jpg)
 
----
+This is where it came together. The objects now sit on stone, in torchlight, surrounded by coins, and look like they've been there for a hundred years.
 
-### Example: Gold Gauntlet
+The **gold gauntlet** (top middle) is my favourite. It reads like a real answer to the story: a glove for scooping up coins so your bare hand never touches the gold, or whatever is guarding it.
 
-One of the key generated artifacts is a **gold gauntlet**:
+Other objects that came out: a gold flask, a mechanical claw for picking up coins, a chest overflowing with gold, carved stone tablets and shrine like pieces.
 
-- designed as a protective tool for collecting coins  
-- adapted to the harsh cave environment  
-- visually consistent with the material language of the world  
+## What didn't work
 
-This object emerges as a **response to environmental constraints**, rather than an isolated design.
+- **Some objects look cool but make no sense.** I can't always tell how you'd hold or use them.
+- **Too much gold.** Gold dominated almost everything, so the objects started to look alike.
+- **Some drift.** One image (bottom right) ended up in a green mossy cave with a sickle, which doesn't match the world.
 
----
+I only had time for one round of training, so this is a first pass. Next time I'd add more variety to the object dataset (less gold, more rope, leather and wood) and write more precise captions about function.
 
-## Generated Object System
+## What it taught me
 
-The combined model produced a range of artifacts, including:
+In this project I didn't draw a single object. My design work was choosing the images, deciding what the world's rules are, writing the captions and steering the prompts.
 
-- containers for storing gold  
-- tools for extraction  
-- ritual like objects (such as figurines)  
-- hybrid objects combining utility and ornamentation  
+The model doesn't imagine anything on its own. It recombines what it has learned. So the designer's job becomes setting up the conditions where a useful result can show up, and then knowing which result is actually good.
 
-## Critical Analysis
+## Try the models
 
-The results reveal a strong coherence between environment and objects:
-
-- consistent material palette (gold, stone, decay)  
-- unified lighting conditions  
-- spatial integration of objects within the environment  
-
-However, several limitations remain:
-
-- certain objects lack clear functional realism  
-- over-reliance on gold as a dominant visual feature  
-- occasional simplification of complex structures  
-
-These gaps highlight the importance of:
-
-- more diverse datasets  
-- more precise annotation strategies  
-- iterative refinement cycles  
-
----
-
-## Iteration Note
-
-Due to time constraints, this project focuses on a first complete training cycle rather than multiple iterations.
-
-However, the observed limitations provide clear directions for future refinement, particularly in improving dataset variation and annotation precision.
-
----
-
-## Reflection
-
-This project demonstrates a shift in the role of the designer.
-
-Rather than directly creating objects, the designer becomes:
-
-- a **curator of datasets**  
-- a **constructor of visual rules**  
-- an **orchestrator of generative systems**  
-
-AI does not imagine independently; it recombines learned patterns.  
-The design process therefore shifts toward defining the **conditions under which meaningful outputs can emerge**.
-
----
-
-## Conclusion
-
-By structuring the project into two learning layers, environment and object, it becomes possible to generate artifacts that feel embedded within a fictional world.
-
-This approach positions AI as a tool for:
-
-- speculative design  
-- narrative driven object creation  
-- world based generative systems  
-
-It opens new possibilities for designing not only objects, but the **systems and contexts from which they arise**.
-
----
-
-## Model Access
-
-To support reproducibility and transparency, the trained LoRA models are available below:
-
-- **Tumbbad Universe LoRA (Environment Model):**  
-https://replicate.com/esadorleans/tumbbad-gold-world  
-
-- **Tumbbad Artifacts LoRA (Object Model):**  
-https://replicate.com/esadorleans/tumbbad-artifacts-lora  
+- World LoRA: [replicate.com/esadorleans/tumbbad-gold-world](https://replicate.com/esadorleans/tumbbad-gold-world)
+- Object LoRA: [replicate.com/esadorleans/tumbbad-artifacts-lora](https://replicate.com/esadorleans/tumbbad-artifacts-lora)
